@@ -65,7 +65,7 @@ const inventory = [
 
 // Task 1: Set the view engine to EJS. 
 
-
+//done
 
 app.use((req, res, next) => {
   console.log(req.method + " " + req.path)
@@ -74,24 +74,30 @@ app.use((req, res, next) => {
 
 // Task 1: Set up the static middleware
 
-
+app.use(express.static(__dirname + "/public"))
 
 // Task 2: Set up the route handler for / to send back the index.html file
 
-
+app.get("/", (res, req)=>{
+res.render('index.html')
+})
 
 // Task 3: Set up the route handler for /mens which sends back category.ejs with the men's category object
 
-
+app.get("/mens", (res,req)=>{
+  res.render('catagory.ejs', inventory[0])
+})
 
 // Task 4: Plug in the values in category.ejs to get the page working
 // PINK ONLY: Set up a route handler for /womens to pass in similar data for women's
 
-
+app.get
 
 // Task 5: Set up the route handler for /item/0 which sends back the first item in product.ejs
 
-
+app.get("/item[0]", (res,req)=>{
+  res.render('product.ejs', product[0] )
+})
 
 // Task 6: Plug in the values in product.ejs to get the page working
 // Extra credit: modify the /item/0 route handler to have dynamic path parameter and return any item's data
